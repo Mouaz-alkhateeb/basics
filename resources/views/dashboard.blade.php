@@ -132,7 +132,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="btn btn-dark m-1" href="{{ route('file') }}" ><i class="bx bx-log-out"></i>upload file</a>
+                                <a class="btn btn-dark m-1" href="{{ route('file') }}"><i class="bx bx-log-out"></i>upload file</a>
                             </li>
                             <li class="nav-item">
                                 <a class="btn btn-dark m-1" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="bx bx-log-out"></i>logout</a>
@@ -140,7 +140,6 @@
                                     @csrf
                                 </form>
                             </li>
-
                         </ul>
                     </div>
                 </nav>

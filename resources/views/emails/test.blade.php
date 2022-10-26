@@ -1,6 +1,6 @@
 @component('mail::message')
 hello ...!!
-<h2>welcome in our websites</h2>
+<h2>welcome in our websites //// recive email...!!</h2>
 @component('mail::button', ['url' => 'https://www.positronx.io','color'=>'success'])
 Button Text
 @endcomponent
