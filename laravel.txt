@@ -1,0 +1,122 @@
+composer install
+composer update
+composer install --ignore-platform-reqs
+composer update --ignore-platform-reqs
+
+
+composer require laravel/ui
+php artisan ui bootstrap --auth
+**********
+composer require laravel/breeze --dev
+php artisan breeze:install
+**********
+composer require laravel/jetstream
+php artisan jetstream:install livewire
+**************************
+composer require psr/simple-cache:^2.0 maatwebsite/excel///laravel 9+
+
+
+npm install
+npm run dev
+php artisan migrate
+php artisan migrate:status
+php artisan migrate:fresh
+php artisan migrate:refresh
+php artisan key:generate
+php artisan storage:link
+php artisan config:cache
+php artisan cache:clear
+php artisan config:clear
+php artisan view:clear
+composer dump-autoload
+php artisan db:seed
+php artisan serve
+php artisan migrate:rollback
+php artisan migrate:reset
+
+
+php artisan make:controller UserController
+php artisan make:controller UserController --resource or -r
+php artisan make:controller UserController --invokable or -i
+Route::resource('users',UserConrtoller::class);
+Route::resource('users',UserConrtoller::class)->middleware('auth');
+Route::controller(UserConrtoller::class)->group(function(){});
+
+
+php artisan make:migration create_posts_table
+php artisab make:migration add_columnName_to_posts
+$table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+php artisan make:model
+php artisan make:model Post -mcr
+
+////QUERY BUILDER////////
+DB::table('posts')->insert(['title'=>$request->title]);
+$posts=DB::table('posts')->get();
+$posts=DB::table('posts')->where('id',$id)->first();
+DB::table('posts')->where('id',$id)->update(['title'=>$request->title,'body'=>$request->body]);
+DB::table('posts')->where('id',$id)->delete();
+DB::table('posts')->delete();
+DB::table('posts')->truncate();
+
+////ELOQUENT////////
+
+////insert data method:1:oop/////
+$post=new Post();
+$post->title=$request->title;
+$post->save();
+////insert data method:2/////
+Post::create(['title'=>$request->title]);
+$posts=Post::all();
+$posts=Post::get();
+
+
+////update data method:1/////
+$post=Post::find($id);
+$post=Post::findOrfail($id);
+$post->title=$request->title;
+$post->save();
+////update data method:2////
+$post=Post::findOrfail($id);
+$post->update(['title'=>$request->title,'body'=>$request->body]);
+Post::findOrfail($id)->delete();
+Post::destroy($id);
+$posts=Post::onlyTrashed()->get();
+Post::withTrashed()->where('id',$id)->restore();
+Post::withTrashed()->where('id',$id)->forceDelete();
+$request->validate(['title'=>'required|unique']);
+php artisan make:request StoreRequest/////relation with validation
+php artisan make:middleware CheckUser
+Route::middleware(['CheckUser'])->group(function(){});
+
+
+php artisan make:seeder UserSeeder
+php artisan db:seed --class=UserSeeder
+User::truncate();
+php artisan db:seed --class=DatabaseSeeder
+php artisan db:seed
+php artisan tinker
+php artisan make:factory PostFactory
+
+
+
+php artisan make:mail TestMail   
+php artisan make:event WelcomeUser   
+php artisan make:listener SendEmailWelcome --event=WelcomeUser   
+php artisan event:generate
+php artisan notifications:table
+php artisan make:notification InvoicePaid
+////////////////////////////////////////////////////////
+php artisan queue:table
+php artisan make:job ActiveUser
+php artisan queue:work
+///////////////////////////////////////////////////////
+
+$img = $request->file('file')->getClientOriginalName();
+$path = $request->file('file')->storeAs('folder-name', $img, 'public');
+{{asset('img/'.$image->path)}}
+
+
+View::share('message','hello');
+View::composer(['page1','page2','page3'],function($view){
+      $view->with('message','hello');
+})
